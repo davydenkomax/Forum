@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY . /app/
 
+RUN chmod +x /app/scripts/entrypoint.sh
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
