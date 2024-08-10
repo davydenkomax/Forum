@@ -199,7 +199,7 @@ LOGIN_URL = reverse_lazy('login')
 
 # Настройки для деплоя
 CSRF_COOKIE_SECURE = False
-CSRF_TRUSTED_ORIGINS = ['http://194.87.92.43/']
+SECURE_PROXY_SSL_HEADER = ("http://194.87.92.43/", "http")
 SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
 
