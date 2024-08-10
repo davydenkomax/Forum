@@ -30,7 +30,7 @@ ADMINS = [
     ('forum', 'django.project.forum@gmail.com'),
 ]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['194.87.92.43']
 
 
 # Application definition
@@ -201,3 +201,8 @@ LOGIN_URL = reverse_lazy('login')
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
+
+# Если включен, отключите HSTS (HTTP Strict Transport Security)
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
