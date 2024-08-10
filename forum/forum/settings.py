@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'DSmdss$aaz#)#u)-3^1vqy51@kasd$@sf1f32Sdsds3t*32fsd#$@f2df@fa(jf2bb2@$*RFDS*(8as*#bfsb@pu&#l39r$s(8$om(3ghe9!ht)m&@n*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = False
 
 ADMINS = [
     ('forum', 'django.project.forum@gmail.com'),
