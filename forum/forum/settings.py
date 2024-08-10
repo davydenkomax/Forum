@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'cacheops',
     'content.apps.ContentConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
