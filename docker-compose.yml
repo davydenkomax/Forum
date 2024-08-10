@@ -41,6 +41,7 @@ services:
       <<: *enviroment-defaults
     volumes:
       - static_volume:/app/static
+      - media_volume:/app/media
   nginx:
     image: nginx:1.26
     restart: always
@@ -48,6 +49,7 @@ services:
       - ./conf/nginx.conf:/etc/nginx/nginx.conf
       - static_volume:/static
       - ./scripts:/scripts
+      - media_volume:/media
     ports:
       - '80:80'
     depends_on:
@@ -75,3 +77,4 @@ services:
       - db
 volumes:
   static_volume:
+  media_volume:
