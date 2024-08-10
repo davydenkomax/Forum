@@ -198,8 +198,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('content:section_list')
 LOGIN_URL = reverse_lazy('login')
 
 # Настройки для деплоя
+
 CSRF_COOKIE_SECURE = False
-SECURE_PROXY_SSL_HEADER = ("http://194.87.92.43/", "http")
+CSRF_COOKIE_DOMAIN = 'http://194.87.92.43/'
+CSRF_TRUSTED_ORIGINS = [ 'http://194.87.92.43/' ]
 SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
 
