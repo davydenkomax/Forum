@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY . /app/
 
+RUN cd ..
 RUN chmod +x /scripts/wait-for-it.sh
+RUN cd forum
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
