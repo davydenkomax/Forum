@@ -47,12 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'embed_video',
     'debug_toolbar',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -199,10 +201,11 @@ LOGIN_URL = reverse_lazy('login')
 
 # Настройки для деплоя
 
-CSRF_COOKIE_SECURE = True
-CSRF_USE_SESSIONS = True 
-CSRF_COOKIE_DOMAIN = 'http://194.87.92.43/'
-CSRF_TRUSTED_ORIGINS = [ 'http://194.87.92.43/' ]
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
 
+CORS_ALLOWED_ORIGINS = [
+    '194.87.92.43',
+]
