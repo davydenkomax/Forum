@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <h1 class="text-center">Авторизация</h1>
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                Неправильный user или password. Пожалуйста попробуйте снова.
+            </div>
+            {% else %}
+            <div class="alert alert-secondary" role="alert">
+                Используйте форму для авторизации.
+            </div>
+            {% endif %}
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-secondary">Авторизация</button>
+                        </div>
+                        <a href="{% url 'password_reset' %}"><p class="mt-2">Забыли пароль?</p></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
