@@ -198,6 +198,6 @@ LOGIN_REDIRECT_URL = reverse_lazy('content:section_list')
 LOGIN_URL = reverse_lazy('login')
 
 # Настройки для деплоя
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
