@@ -6,7 +6,7 @@ COPY . /app/
 
 RUN cd ..
 RUN ls
-RUN slepp 10
+RUN sleep 10
 RUN chmod +x /scripts/wait-for-it.sh
 RUN cd forum
 RUN pip install --upgrade pip
