@@ -1,6 +1,6 @@
 x-enviroment-defaults: &enviroment-defaults
   DEBUG: 'False'
-  ALLOWED_HOSTS: '194.87.92.43'
+  ALLOWED_HOSTS: 'my-django-project.ru'
   DB_NAME: postgres
   DB_USER: postgres
   DB_PASSWORD: postgres
