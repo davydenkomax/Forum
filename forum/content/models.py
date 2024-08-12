@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from slugify import slugify
 from django.utils import timezone
+from .validators import check_max_size_file
 
 # Create your models here.
 class Section(models.Model):
@@ -134,7 +135,7 @@ class Text(models.Model):
         return self.text
 
 class Image(models.Model):
-    file = models.FileField(upload_to='images')
+    file = models.FileField(upload_to='images', validators=[check_max_size_file])
 
 class Video(models.Model):
     video = models.URLField()
