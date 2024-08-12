@@ -83,6 +83,7 @@ class MessageCreateView(LoginRequiredMixin, TemplateView):
     template_name = 'manage/create_message.html'
     subject_obj = None
     parent_message = None
+    has_permission = True
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
@@ -112,9 +113,17 @@ class MessageCreateView(LoginRequiredMixin, TemplateView):
                     Message,
                     id=parent_message_id
                 )
+            
+            if self.parent_message.subject != self.subject_obj:
+                self.has_permission = False
 
         return super().dispatch(request, *args, **kwargs)
-
+    
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+        if not self.has_permission:
+            return redirect(self.subject_obj.get_absolute_url())
+        return super().get(request, *args, **kwargs)
+    
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:        
 
         if self.subject_obj:
