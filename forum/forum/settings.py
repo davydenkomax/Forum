@@ -194,7 +194,7 @@ INTERNAL_IPS = [
 #     'content.*': {'ops': 'all', 'timeout': 60*15},
 # }
 
-# Настройка системы аутетификации
+# Настройка системы аутентификации
 LOGIN_REDIRECT_URL = reverse_lazy('content:section_list')
 
 LOGIN_URL = reverse_lazy('login')
