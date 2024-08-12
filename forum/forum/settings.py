@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'DSmdss$aaz#)#u)-3^1vqy51@kasd$@sf1f32Sdsds3t*32fsd#$@f2df@fa(jf2bb2@$*RFDS*(8as*#bfsb@pu&#l39r$s(8$om(3ghe9!ht)m&@n*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG', True))
+DEBUG = False
 
 ADMINS = [
     ('forum', 'django.project.forum@gmail.com'),
@@ -205,6 +205,11 @@ LOGIN_URL = reverse_lazy('login')
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 3600  
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  
+SECURE_HSTS_PRELOAD = True 
+SECURE_SSL_REDIRECT = True
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = False
