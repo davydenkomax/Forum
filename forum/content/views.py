@@ -238,23 +238,30 @@ class ContentCreateUpdateView(LoginRequiredMixin, TemplateView):
         return Form(*args, **kwargs)
     
     def dispatch(self, request: HttpRequest, message_id, *args: Any, **kwargs: Any) -> HttpResponse:
-        name_model = request.GET.get('content')
-        self.model = self.get_model(name_model)
-
         self.message = get_object_or_404(
             Message,
             id=message_id
         )
         
+        name_model = request.GET.get('content')
         object_id = request.GET.get('id')
         if object_id:
             self.object = get_object_or_404(
                 Content,
-                object_id=object_id
+                id=object_id
             )
 
-        if self.message.author == request.user:
+            if self.object.message.author == request.user \
+                and self.object.content_type.model == name_model:
+                self.has_permission = True
+
+        self.model = self.get_model(name_model)
+
+        if self.message.author == request.user and not self.object:
             self.has_permission = True
+        
+        if self.message.author != request.user and self.object:
+            self.has_permission = False
 
         return super().dispatch(request, message_id, *args, **kwargs)
     

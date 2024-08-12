@@ -1,5 +1,6 @@
 x-enviroment-defaults: &enviroment-defaults
-  DEBUG: False
+  DEBUG: 'False'
+  ALLOWED_HOSTS: '194.87.92.43'
   DB_NAME: postgres
   DB_USER: postgres
   DB_PASSWORD: postgres

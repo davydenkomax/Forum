@@ -44,7 +44,7 @@
                                                 Добавлено {{ content.created }}  
                                             {% endif %}
                                             {% if user == message.author %}
-                                            <a href="{% url 'content:create_update_content' message.id %}?content={{ model_name }}&id={{ content.object_id }}">
+                                            <a href="{% url 'content:create_update_content' message.id %}?content={{ model_name }}&id={{ content.id }}">
                                                 <img src="{% static 'img/edit.png' %}" style="max-width: 20px;" alt="edit-content">
                                             </a>
                                             {% if forloop.counter != 1 %}
