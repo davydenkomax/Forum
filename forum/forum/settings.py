@@ -31,7 +31,7 @@ ADMINS = [
 ]
 
 # ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['my-django-project.ru', 'www.my-django-project.ru']
+ALLOWED_HOSTS = ['my-django-project.ru', 'www.my-django-project.ru', '194.87.92.43']
 
 
 # Application definition
