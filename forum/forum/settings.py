@@ -31,12 +31,19 @@ ADMINS = [
 ]
 
 # ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = ['my-django-project.ru', 'www.my-django-project.ru', '194.87.92.43']
+ALLOWED_HOSTS = [
+    'my-django-project.ru', 
+    'www.my-django-project.ru', 
+    '194.87.92.43', 
+    'my-django-project.ru:443', 
+    'www.my-django-project.ru:443'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'cacheops',
     'content.apps.ContentConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
@@ -184,16 +191,12 @@ INTERNAL_IPS = [
 ]
 
 # Настройка глобального кэширования
-# CACHEOPS_REDIS = {
-#     'host': 'localhost', 
-#     'port': 6379,            
-#     'db': 2,                 
-# }
+CACHEOPS_REDIS = os.environ.get('CACHEOPS_REDIS', 'redis://localhost:6379/')
 
-# CACHEOPS = {
-#     'account.*': {'ops': 'all', 'timeout': 60*15},
-#     'content.*': {'ops': 'all', 'timeout': 60*15},
-# }
+CACHEOPS = {
+    'account.*': {'ops': 'all', 'timeout': 60*15},
+    'content.*': {'ops': 'all', 'timeout': 60*15},
+}
 
 # Настройка системы аутентификации
 LOGIN_REDIRECT_URL = reverse_lazy('content:section_list')

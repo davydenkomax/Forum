@@ -11,6 +11,7 @@ x-enviroment-defaults: &enviroment-defaults
   CACHES_LOCATION: 'redis://redis:6379/'
   REDIS_HOST: 'redis'
   DJANGO_SETTINGS_MODULE: 'forum.settings'
+  CACHEOPS_REDIS: 'redis://redis:6379/'
 
 services:
   redis:
