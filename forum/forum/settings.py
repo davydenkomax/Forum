@@ -162,10 +162,10 @@ AUTHENTICATION_BACKENDS = [
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 EMAIL_HOST_USER = "django.project.forum@gmail.com"
 EMAIL_HOST_PASSWORD = "miam pejm uhhx orfs"
-EMAIL_USE_SSL = True
+EMAIL_USE_SSL = False
 
 # Настройка параметров redis
 
