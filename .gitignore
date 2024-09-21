@@ -1,8 +1,8 @@
 .venv
 .vscode
 conf
-ect
-scripts
+ect/
+scripts/
 
 
 # Byte-compiled / optimized / DLL files
