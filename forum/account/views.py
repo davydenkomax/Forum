@@ -3,7 +3,7 @@ from django.db.models.query import QuerySet
 from django.forms import BaseModelForm
 from django.http import Http404, HttpRequest, HttpResponse
 from django.views.generic.edit import CreateView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import RegistrationForm, ProfileUpdateForm, UserUpdateForm
@@ -36,7 +36,7 @@ class RegisterView(CreateView):
 
         return super().form_valid(form)
     
-class ProfileUserUpdateView(LoginRequiredMixin, TemplateView):
+class ProfileUserUpdateView(LoginRequiredMixin, View):
     template_name = 'update/update_profile_user.html'
     first_form = UserUpdateForm
     second_form = ProfileUpdateForm
