@@ -1,17 +1,16 @@
 x-enviroment-defaults: &enviroment-defaults
-  DEBUG: 'False'
-  SECRET_KEY: 'DSmdss$aaz#)#u)-3^1vqy51@kasd$@sf1f32Sdsds3t*32fsd#$@f2df@fa(jf2bb2@$*RFDS*(8as*#bfsb@pu&#l39r$s(8$om(3ghe9!ht)m&@n*'
+  DEBUG: "False"
   DB_NAME: postgres
   DB_USER: new_user
   DB_PASSWORD: e0098aa9836100ad43340572c8c3c0b71b
   DB_HOST: db
   DB_PORT: 5432
-  CELERY_BROKER_URL: 'redis://redis:6379/'
-  CELERY_RESULT_BACKEND: 'redis://redis:6379/'
-  CACHES_LOCATION: 'redis://redis:6379/'
-  REDIS_HOST: 'redis'
-  DJANGO_SETTINGS_MODULE: 'forum.settings'
-  CACHEOPS_REDIS: 'redis://redis:6379/'
+  CELERY_BROKER_URL: "redis://redis:6379/"
+  CELERY_RESULT_BACKEND: "redis://redis:6379/"
+  CACHES_LOCATION: "redis://redis:6379/"
+  REDIS_HOST: "redis"
+  DJANGO_SETTINGS_MODULE: "forum.settings"
+  CACHEOPS_REDIS: "redis://redis:6379/"
 
 services:
   redis:
@@ -19,7 +18,7 @@ services:
     restart: always
     container_name: redis
     ports:
-      - '6379:6379'
+      - "6379:6379"
   db:
     image: postgres:14.5
     restart: always
@@ -31,13 +30,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - '5432:5432'
+      - "5432:5432"
   web:
-    build: 
+    build:
       context: ./forum
     container_name: web
     ports:
-      - '8000:8000'
+      - "8000:8000"
     depends_on:
       - db
       - redis
@@ -56,13 +55,13 @@ services:
       - ./scripts:/scripts
       - media_volume:/media
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     depends_on:
       - web
     entrypoint: sh -c "chmod +x /scripts/wait-for-it.sh && /scripts/wait-for-it.sh web:8000 -- nginx -g 'daemon off;'"
   celery-worker:
-    build: 
+    build:
       context: ./forum
     container_name: celery-worker
     command: celery -A forum.celery:app worker --loglevel=info
@@ -72,7 +71,7 @@ services:
       - redis
       - db
   celery-beat:
-    build: 
+    build:
       context: ./forum
     container_name: celery-beat
     command: celery -A forum.celery:app beat --loglevel=info
