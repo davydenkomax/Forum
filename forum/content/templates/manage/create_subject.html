@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load content_tags %}
+
+{% block title %}Создание темы{% endblock %}
+
+{% block content %}
+<div class="ms-4 me-4">
+    <div class="position-relative mx-auto" style="width: 400px; height: 70px;">
+        <h3 class="position-absolute top-50 start-50 translate-middle">Создание темы</h3>
+    </div>
+    <div class="position-relative mx-auto" style="width: 700px">
+        <form method="post">
+            {{ subject_form.as_p }}
+            {{ text_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Создать тему"></p>
+        </form>    
+    </div>
+</div>
+{% endblock %}
